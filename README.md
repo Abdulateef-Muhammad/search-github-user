@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# GitHub Repository Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application built with React, TypeScript, and Vite that allows users to search for GitHub repositories and view detailed information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Repository Search:** Search for GitHub repositories by username.
+- **Filtering & Sorting:** Filter repositories by language and sort by stars, forks, or update date.
+- **Responsive Design:** A clean, mobile-friendly interface built with Tailwind CSS.
+- **Dark/Light Mode:** Seamless theme switching support.
+- **User Profiles:** View GitHub user profile information including bio, location, and social links.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **Framework:** React 19 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Data Fetching:** SWR
+- **Testing:** Vitest + React Testing Library
 
-## Expanding the ESLint configuration
+## Data Fetching with SWR
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project uses **SWR** (stale-while-revalidate), a React Hooks library for data fetching. The name is derived from the HTTP cache invalidation strategy popularized by HTTP RFC 5861.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Why SWR?
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+SWR provides a seamless data fetching experience with built-in features like:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Fast & Lightweight:** Minimal bundle size.
+- **Real-time Experience:** Automatic revalidation on focus, network recovery, and interval.
+- **TypeScript Support:** First-class TypeScript support.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Caching Strategy
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+By default, SWR uses the **stale-while-revalidate** caching strategy. Here’s how it works:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Stale:** When a request is made, SWR immediately returns the cached data (if available) so the UI renders instantly.
+2.  **Revalidate:** At the same time, SWR sends a fetch request to the API to check for the latest data.
+3.  **Update:** Once the new data arrives, SWR updates the UI with the fresh data and updates the cache.
+
+This strategy ensures the user sees content immediately (even if it's slightly old) while the app updates it in the background, providing a snappy, "app-like" feel. Other default caching behaviors include:
+- **Deduplication:** Multiple components requesting the same data will only trigger a single network request.
+- **Cache Persistence:** Data remains in the cache and is shared across components.

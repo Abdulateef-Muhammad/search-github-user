@@ -13,7 +13,7 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({ repo }) => {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group border hover:border-[--color-border-light] rounded-2xl p-6 h-full flex flex-col no-underline text-[--color-text-primary] relative overflow-hidden transition-all duration-300"
+            className="group border hover:bg-(--color-border-light)/30 rounded-2xl p-6 h-full flex flex-col no-underline text-[--color-text-primary] relative overflow-hidden transition-all duration-300"
             style={{ borderColor: 'var(--color-border)' }}
         >
             <div
