@@ -17,9 +17,9 @@ const FilterControls: React.FC<FilterControlsProps> = ({
                 <FiFilter size={16} />
                 Filter by language:
             </span>
-            <div className="relative">
+            <div className="relative flex-1">
                 <select
-                    className="min-w-[200px] md:min-w-[200px] cursor-pointer appearance-none bg-no-repeat pr-10 border p-1 px-2 rounded border-gray-400"
+                    className="min-w-[200px] w-full md:min-w-[200px] cursor-pointer appearance-none bg-no-repeat pr-10 border p-1 px-2 rounded border-gray-400"
                     style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4L6 8L10 4' stroke='%238b949e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                         backgroundPosition: 'right 1rem center'

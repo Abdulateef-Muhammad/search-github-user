@@ -40,7 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
     return (
         <div className="p-4 mb-8 flex justify-center">
-            <div className="relative flex items-center w-7/12">
+            <div className="relative flex items-center w-full sm:w-10/12 md:w-7/12">
                 <FiSearch
                     className="absolute left-4 pointer-events-none z-10"
                     style={{ color: 'var(--color-text-tertiary)' }}

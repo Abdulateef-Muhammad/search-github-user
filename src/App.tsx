@@ -57,19 +57,19 @@ function App() {
     <ThemeProvider>
       <div className="min-h-screen px-4 py-8 md:px-4 md:py-8 transition-colors duration-300" style={{ background: 'var(--color-bg-primary)' }}>
         <div className="max-w-[1400px] md:max-w-[1400px] mx-auto">
-          <header className="text-center mb-12 p-8 md:p-8 relative">
-            <div className="absolute top-4 right-4 md:top-8 md:right-8">
+          <header className="text-center mb-12 relative">
+            <div className="absolute top-0 right-0">
               <ThemeToggle />
             </div>
-            <div className='flex items-center justify-center gap-3'>
+            <div className='flex items-center justify-center gap-3 pt-12'>
               <span>
                 <BsGithub className='w-10 h-10' />
               </span>
-              <h1 className="text-4xl md:text-4xl mb-2">
+              <h1 className="text-2xl md:text-4xl mb-2">
                 GitHub User Search
               </h1>
             </div>
-            <p className="m-0 text-lg md:text-lg" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="mt-2 w-2/3 mx-auto text-sm md:text-lg" style={{ color: 'var(--color-text-secondary)' }}>
               Discover GitHub users and explore their repositories
             </p>
           </header>

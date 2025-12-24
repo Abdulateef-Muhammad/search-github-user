@@ -47,11 +47,12 @@ const SortControls: React.FC<SortControlsProps> = ({
             <span className="flex items-center text-sm font-medium mr-2" style={{ color: 'var(--color-text-secondary)' }}>
                 Sort by:
             </span>
+            <div className='flex gap-2 flex-wrap'>
 
             <button
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 cursor-pointer text-sm font-medium ${sortBy === 'stars'
-                    ? 'bg-[var(--color-primary-light)] text-white border-transparent shadow-md'
-                    : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:bg-[var(--color-bg-tertiary)] hover:border-[var(--color-border-light)]'
+                className={`flex flex-1 items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 cursor-pointer text-sm font-medium ${sortBy === 'stars'
+                    ? 'bg-(--color-primary-light) text-white border-transparent shadow-md'
+                    : 'bg-(--color-bg-secondary) text-(--color-text-secondary) border-[var(--color-border)] hover:bg-(--color-bg-tertiary) hover:border-(--color-border-light)'
                     }`}
                 style={sortBy === 'stars' ? { background: 'var(--color-primary)' } : {}}
                 onClick={() => handleSortClick('stars')}
@@ -62,7 +63,7 @@ const SortControls: React.FC<SortControlsProps> = ({
             </button>
 
             <button
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 cursor-pointer text-sm font-medium ${sortBy === 'forks'
+                className={`flex flex-1 items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 cursor-pointer text-sm font-medium ${sortBy === 'forks'
                     ? 'bg-[var(--color-primary-light)] text-white border-transparent shadow-md'
                     : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:bg-[var(--color-bg-tertiary)] hover:border-[var(--color-border-light)]'
                     }`}
@@ -75,7 +76,7 @@ const SortControls: React.FC<SortControlsProps> = ({
             </button>
 
             <button
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 cursor-pointer text-sm font-medium ${sortBy === 'updated'
+                className={`flex flex-1 items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-200 cursor-pointer text-sm font-medium ${sortBy === 'updated'
                     ? 'bg-[var(--color-primary-light)] text-white border-transparent shadow-md'
                     : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:bg-[var(--color-bg-tertiary)] hover:border-[var(--color-border-light)]'
                     }`}
@@ -86,6 +87,7 @@ const SortControls: React.FC<SortControlsProps> = ({
                 Updated
                 {getDirectionIcon('updated')}
             </button>
+            </div>
         </div>
     );
 };
