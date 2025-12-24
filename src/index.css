@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Color Palette - Rich HSL values */
+    --color-primary-h: 220;
+    --color-primary-s: 90%;
+    --color-primary-l: 56%;
+    --color-primary: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+    --color-primary-light: hsl(var(--color-primary-h), var(--color-primary-s), 65%);
+    --color-primary-dark: hsl(var(--color-primary-h), var(--color-primary-s), 45%);
+
+    --color-secondary-h: 280;
+    --color-secondary-s: 85%;
+    --color-secondary-l: 60%;
+    --color-secondary: hsl(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l));
+
+    --color-accent-h: 340;
+    --color-accent-s: 82%;
+    --color-accent-l: 58%;
+    --color-accent: hsl(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l));
+
+    /* Light theme colors (Default) */
+    --color-bg-primary: hsl(220, 50%, 98%);
+    --color-bg-secondary: hsl(220, 50%, 95%);
+    --color-bg-tertiary: hsl(220, 50%, 90%);
+    --color-bg-elevated: hsl(220, 50%, 99%);
+
+    --color-text-primary: hsl(222, 47%, 11%);
+    --color-text-secondary: hsl(222, 20%, 40%);
+    --color-text-tertiary: hsl(222, 10%, 60%);
+
+    --color-border: hsl(220, 20%, 85%);
+    --color-border-light: hsl(220, 20%, 80%);
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --color-bg-primary: hsl(222, 47%, 11%);
+    --color-bg-secondary: hsl(222, 47%, 14%);
+    --color-bg-tertiary: hsl(222, 47%, 18%);
+    --color-bg-elevated: hsl(222, 47%, 22%);
+
+    --color-text-primary: hsl(0, 0%, 98%);
+    --color-text-secondary: hsl(0, 0%, 75%);
+    --color-text-tertiary: hsl(0, 0%, 55%);
+
+    --color-border: hsl(222, 47%, 25%);
+    --color-border-light: hsl(222, 47%, 30%);
+  }
+
+
+
+  html {
+    @apply text-base antialiased;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+}
+
+@layer components {
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2 text-sm font-medium border-none rounded-lg cursor-pointer transition-all duration-150 whitespace-nowrap;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    @apply text-white;
+    box-shadow: 0 4px 12px hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.4);
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-px;
+    box-shadow: 0 6px 16px hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.5);
+  }
+
+  .btn-primary:active {
+    @apply translate-y-0;
+  }
+
+  .btn-secondary {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-light);
+  }
+
+  .btn-ghost {
+    @apply bg-transparent;
+    color: var(--color-text-secondary);
+  }
+
+  .btn-ghost:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+  }
+
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+    transform: none !important;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 250ms ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 250ms ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
